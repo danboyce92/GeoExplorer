@@ -1,0 +1,25 @@
+@import './helpers/mixins.scss';
+
+@import './components/app.scss';
+@import './components/header.scss';
+@import './components/search-box.scss';
+@import './components/data-components/data-display.scss';
+@import './components/data-components/new-search.scss';
+
+.coolors {
+  color: #CFCFEA;
+  color: #DCEDFF;
+  color: #94B0DA;
+  color: #93E5FF;
+  color: #77DB54;
+  color: #2A2C24;
+
+}
+
+.fonts {
+  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Trirong', serif;
+}
+
+@media screen and (max-width: 600px) {}

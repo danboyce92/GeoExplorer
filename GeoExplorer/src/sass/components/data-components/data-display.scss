@@ -1,0 +1,22 @@
+
+#data-display {
+  @include grid-position(1, 2, 2, 5);
+  width: clamp(280px, 75vw, 800px);
+  height: 100%;
+  margin: auto;
+  display: grid; 
+  grid-template-rows: repeat(6, 1fr);
+  color: white;
+
+
+  #data {
+
+  }
+  #g-m {
+
+  }
+  #flag {
+
+  }
+}
+
