@@ -1,0 +1,43 @@
+
+#data-flag {
+  @include grid-position(2, 3, 3, 6);
+  border-radius: 10px;
+  border: 1px solid #94B0DA;
+  background-color: rgba(148, 176, 218, .4);
+  margin-left: 15px;
+  display: grid;
+
+  #flag-space {
+    @include grid-position(1, 2, 1, 2);
+
+  }
+  #flag-button {
+    @include grid-position(1, 2, 1, 2);
+
+    border-radius: 08px;
+    margin: auto;
+    padding: 10px;
+    background-color: #CFCFEA;
+    font-family: 'Lato', sans-serif;
+    font-size: clamp(1.4rem, 10vw, 2rem);
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+  }
+  #flag-button:hover {
+    scale: 1.1;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  #data-flag {
+    @include grid-position(1, 3, 8, 11);
+    margin-bottom: 20px;
+    margin-left: 0px;
+  }
+
+  
+}

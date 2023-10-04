@@ -1,13 +1,17 @@
+import DataBlock from "./DataBlock"
+import DataFlag from "./DataFlag"
+import GoogleMaps from "./GoogleMaps"
 import NewSearch from "./NewSearch"
 
 
 const DataDisplay = () => {
   return (
     <div id="data-display">
-      <form id="new-search"><NewSearch /></form>
-      <div id="data">Data</div>
-      <div id="g-m">Show me GM</div>
-      <div id="flag">Flag</div>
+      <NewSearch />
+      <DataBlock />
+      <GoogleMaps />
+      <DataFlag />
+      <p id="scroll">Scroll Down</p>
     </div>
   )
 }

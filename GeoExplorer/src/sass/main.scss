@@ -5,6 +5,9 @@
 @import './components/search-box.scss';
 @import './components/data-components/data-display.scss';
 @import './components/data-components/new-search.scss';
+@import './components/data-components/data-block.scss';
+@import './components/data-components/google-maps.scss';
+@import './components/data-components/data-flag.scss';
 
 .coolors {
   color: #CFCFEA;
@@ -22,4 +25,3 @@
   font-family: 'Trirong', serif;
 }
 
-@media screen and (max-width: 600px) {}

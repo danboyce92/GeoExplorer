@@ -1,22 +1,30 @@
 
 #data-display {
   @include grid-position(1, 2, 2, 5);
-  width: clamp(280px, 75vw, 800px);
+  width: clamp(280px, 85vw, 900px);
   height: 100%;
   margin: auto;
   display: grid; 
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(6, 1fr);
   color: white;
 
-
-  #data {
-
-  }
-  #g-m {
-
-  }
-  #flag {
-
-  }
 }
 
+@media screen and (max-width: 750px) {
+  #data-display {
+    grid-template-rows: repeat(10, 1fr);
+    margin-top: 100px;
+    height: 140vh;
+  
+    #scroll {
+      @include grid-position(1, 3, 6, 7);
+      margin: auto;
+      font-family: 'Roboto', sans-serif;
+      font-size: clamp(1rem, 7vw, 2rem);
+      font-style: italic;
+
+
+    }
+  }
+}
