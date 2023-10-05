@@ -2,7 +2,7 @@ import DataBlock from "./DataBlock"
 import DataFlag from "./DataFlag"
 import GoogleMaps from "./GoogleMaps"
 import NewSearch from "./NewSearch"
-
+import { FaChevronDown } from "react-icons/fa";
 
 const DataDisplay = () => {
   return (
@@ -11,7 +11,10 @@ const DataDisplay = () => {
       <DataBlock />
       <GoogleMaps />
       <DataFlag />
-      <p id="scroll">Scroll Down</p>
+      <div id="scroll-msg">
+        <p id="scroll">Scroll Down</p>
+        <FaChevronDown size={32} />
+      </div>
     </div>
   )
 }

@@ -7,11 +7,14 @@ function App() {
 
   return (
     <div id="app">
-      <div id="shader">
-        <Header position="pos-2" />
+
+      <div id="above-shader">
+        <Header />
         {/* <SearchBox /> */}
         <DataDisplay />
       </div>
+
+
     </div>
   )
 }

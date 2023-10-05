@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 
 
-const Header = ({ position }) => {
+const Header = () => {
   return (
-    <div className='header' id={position}>Geo-Explorer</div>
+    <div id='header'>Geo-Explorer</div>
   )
 }
 
