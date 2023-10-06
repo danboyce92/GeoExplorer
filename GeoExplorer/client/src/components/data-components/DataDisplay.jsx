@@ -8,7 +8,12 @@ import NewSearch from "./NewSearch"
 
 const DataDisplay = () => {
     const [data, setData] = useState();
+    const [name, setName] = useState();
     const [capital, setCapital] = useState('');
+    const [pop, setPop] = useState('');
+    const [cur, setCur] = useState('');
+    const [lang, setLang] = useState('');
+    const [cont, setCont] = useState('');
     const [gmLink, setGmLink] = useState('');
     const [flag, setFlag] = useState('');
     const [coatArms, setCoatArms] = useState('');
@@ -20,17 +25,22 @@ const DataDisplay = () => {
     useEffect(() => {
       if (data) {
         setGmLink(data[0].maps['googleMaps']);
+        setName(data[0].name["official"]);
         setCapital(data[0].capital[0]);
+        setPop(data[0].population.toLocaleString());
+        setCur(data[0].currencies);
+        setLang(data[0].languages);
+        setCont(data[0].continents[0]);
         setFlag(data[0].flags.svg)
         setCoatArms(data[0].coatOfArms.svg)
-        console.log(data[0]);
+        console.log(data[0].currencies);
       }
     }, [data])
 
     return (
       <div id="data-display">
         <NewSearch retrieveData={retrieveData} />
-        <DataBlock capital={capital} />
+        {/* <DataBlock name={name} capital={capital} pop={pop} cur={cur} lang={lang} cont={cont} /> */}
         <GoogleMaps gmLink={gmLink} />
         <DataFlag flag={flag} coatArms={coatArms} />
         <div id="scroll-msg">
