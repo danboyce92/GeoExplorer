@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 
-
-const DataBlock = () => {
+const DataBlock = ({ capital }) => {
   return (
     <div id="data">
       <h1 id="country">Ireland</h1>
@@ -13,7 +13,7 @@ const DataBlock = () => {
           <p className="legend">Continent:</p>
         </div>
         <div id="data-container">
-          <p className="datapoint">Ireland</p>
+          <p className="datapoint">{capital}</p>
           <p className="datapoint">4994724</p>
           <p className="datapoint">Eur</p>
           <p className="datapoint">English</p>
@@ -22,6 +22,10 @@ const DataBlock = () => {
       </div>
     </div>
   )
+}
+
+DataBlock.propTypes = {
+  capital: PropTypes.string,
 }
 
 export default DataBlock

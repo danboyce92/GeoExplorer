@@ -1,22 +1,44 @@
+import { useState, useEffect } from 'react';
+import { FaChevronDown } from "react-icons/fa";
 import DataBlock from "./DataBlock"
 import DataFlag from "./DataFlag"
 import GoogleMaps from "./GoogleMaps"
 import NewSearch from "./NewSearch"
-import { FaChevronDown } from "react-icons/fa";
+
 
 const DataDisplay = () => {
-  return (
-    <div id="data-display">
-      <NewSearch />
-      <DataBlock />
-      <GoogleMaps />
-      <DataFlag />
-      <div id="scroll-msg">
-        <p id="scroll">Scroll Down</p>
-        <FaChevronDown size={32} />
+    const [data, setData] = useState();
+    const [capital, setCapital] = useState('');
+    const [gmLink, setGmLink] = useState('');
+    const [flag, setFlag] = useState('');
+    const [coatArms, setCoatArms] = useState('');
+
+    const retrieveData = (data) => {
+      setData(data);
+    }
+
+    useEffect(() => {
+      if (data) {
+        setGmLink(data[0].maps['googleMaps']);
+        setCapital(data[0].capital[0]);
+        setFlag(data[0].flags.svg)
+        setCoatArms(data[0].coatOfArms.svg)
+        console.log(data[0]);
+      }
+    }, [data])
+
+    return (
+      <div id="data-display">
+        <NewSearch retrieveData={retrieveData} />
+        <DataBlock capital={capital} />
+        <GoogleMaps gmLink={gmLink} />
+        <DataFlag flag={flag} coatArms={coatArms} />
+        <div id="scroll-msg">
+          <p id="scroll">Scroll Down</p>
+          <FaChevronDown size={32} />
+        </div>
       </div>
-    </div>
-  )
+    )
 }
 
-export default DataDisplay
+export default DataDisplay;
