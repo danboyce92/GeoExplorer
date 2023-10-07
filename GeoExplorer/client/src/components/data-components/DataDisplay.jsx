@@ -40,7 +40,7 @@ const DataDisplay = () => {
     return (
       <div id="data-display">
         <NewSearch retrieveData={retrieveData} />
-        {/* <DataBlock name={name} capital={capital} pop={pop} cur={cur} lang={lang} cont={cont} /> */}
+        <DataBlock name={name} capital={capital} pop={pop} cur={cur} lang={lang} cont={cont} />
         <GoogleMaps gmLink={gmLink} />
         <DataFlag flag={flag} coatArms={coatArms} />
         <div id="scroll-msg">
