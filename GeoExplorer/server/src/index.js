@@ -11,26 +11,25 @@ app.use(
   })
 );
 
-//Start this request from scratch!
 app.get('/name', async (req, res) => {
   try {
     const countryName = req.query.country;
-
-    if (!countryName) {
-      return res.status(400).json({ error: 'Country name is required' });
-    }
 
     // Make a request to the external API with the user's requested country name
     const response = await axios.get(
       `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
     );
-    const countryData = await response.data;
+
+    //Potential error situations
+    if (!countryName) {
+      return res.status(400).json({ error: 'Country name is required' });
+    }
 
     // Send the fetched data as a JSON response
+    const countryData = await response.data;
     res.json(countryData);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(error.response.status).json({ error: 'Internal server error' });
   }
 });
 

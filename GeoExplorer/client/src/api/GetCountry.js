@@ -4,7 +4,9 @@ export async function getCountry(country) {
   const response = await fetch(`${url}name?country=${country}`);
 
   if (!response.ok) {
-    throw new Error(`Request failed with status: ${response.status}`);
+    throw new Error(
+      `Request failed with status: ${response.status} because: ${response.statusText}`
+    );
   }
 
   return response.json();

@@ -1,0 +1,25 @@
+
+#spinner-cont {
+  @include grid-position(1, 2, 2, 3);
+  margin: auto;
+  #spinner {
+    width: 100px;
+
+    animation: loading 1.5s linear infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  #loading-text {
+    text-align: center;
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+  
+}

@@ -1,53 +1,75 @@
 import { useState, useEffect } from 'react';
 import { FaChevronDown } from "react-icons/fa";
-import DataBlock from "./DataBlock"
-import DataFlag from "./DataFlag"
-import GoogleMaps from "./GoogleMaps"
-import NewSearch from "./NewSearch"
-
+import DataBlock from "./DataBlock";
+import DataFlag from "./DataFlag";
+import GoogleMaps from "./GoogleMaps";
+import NewSearch from "./NewSearch";
+import LoadingSpinner from './LoadingSpinner';
 
 const DataDisplay = () => {
-    const [data, setData] = useState();
-    const [name, setName] = useState();
-    const [capital, setCapital] = useState('');
-    const [pop, setPop] = useState('');
-    const [cur, setCur] = useState('');
-    const [lang, setLang] = useState('');
-    const [cont, setCont] = useState('');
+    const [data, setData] = useState('');
+    const [dispTrigger, setDispTrigger] = useState('data-none');
+    const [loading, setLoading] = useState(false);
+    const [countryInfo, setCountryInfo] = useState([]);
     const [gmLink, setGmLink] = useState('');
     const [flag, setFlag] = useState('');
     const [coatArms, setCoatArms] = useState('');
+ 
 
-    const retrieveData = (data) => {
-      setData(data);
+    const retrieveData = (dataInput) => {
+      setDispTrigger('data-none');
+      setLoading(true);
+      setTimeout(() => {
+        setData(dataInput);
+        setDispTrigger('data-vis');
+      }, 1000)
+
+
     }
 
     useEffect(() => {
+
       if (data) {
-        setGmLink(data[0].maps['googleMaps']);
-        setName(data[0].name["official"]);
-        setCapital(data[0].capital[0]);
-        setPop(data[0].population.toLocaleString());
-        setCur(data[0].currencies);
-        setLang(data[0].languages);
-        setCont(data[0].continents[0]);
-        setFlag(data[0].flags.svg)
-        setCoatArms(data[0].coatOfArms.svg)
-        console.log(data[0].currencies);
+        const countryData = data[0];
+        const newCountryInfo = [
+          countryData.name["official"],
+          countryData.capital[0],
+          countryData.population.toLocaleString(),
+          countryData.currencies,
+          countryData.languages,
+          countryData.continents[0],
+        ];
+        setCountryInfo(newCountryInfo);
+        setGmLink(countryData.maps['googleMaps']);
+        setFlag(countryData.flags.svg);
+        setCoatArms(countryData.coatOfArms.svg);
+        setLoading(false);
+
       }
+
     }, [data])
 
     return (
-      <div id="data-display">
-        <NewSearch retrieveData={retrieveData} />
-        <DataBlock name={name} capital={capital} pop={pop} cur={cur} lang={lang} cont={cont} />
-        <GoogleMaps gmLink={gmLink} />
-        <DataFlag flag={flag} coatArms={coatArms} />
-        <div id="scroll-msg">
-          <p id="scroll">Scroll Down</p>
-          <FaChevronDown size={32} />
+        <div id="data-display">
+          <div id="search-bar">
+            <NewSearch retrieveData={retrieveData} data={data} />  
+            <p id="instruction">Enter the name of a country you wish to learn more about!</p>
+          </div>
+            { loading &&
+              <LoadingSpinner />
+            }
+
+          <div id={`${dispTrigger}`}>
+            <DataBlock countryInfo={countryInfo} />
+            <GoogleMaps gmLink={gmLink} />
+            <DataFlag flag={flag} coatArms={coatArms} />
+            <div id="scroll-msg">
+              <p id="scroll">Scroll Down</p>
+              <FaChevronDown size={32} />
+            </div>
+          </div>
         </div>
-      </div>
+
     )
 }
 

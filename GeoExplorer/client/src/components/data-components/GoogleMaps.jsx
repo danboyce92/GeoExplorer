@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const GoogleMaps = ({ gmLink }) => {
   return (
     <div id="google-maps">
-        <h1 id="prompt">Show me on <a id="gm-link" href={`${gmLink}`}>Google Maps</a></h1>
+        <h1 id="prompt">Show me on <br/> <a rel="noreferrer" target="_blank" id="gm-link" href={`${gmLink}`}>Google Maps</a></h1>
     </div>
   )
 }

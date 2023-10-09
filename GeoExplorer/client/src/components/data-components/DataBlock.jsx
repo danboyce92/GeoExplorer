@@ -1,32 +1,32 @@
 import PropTypes from 'prop-types';
 
-const DataBlock = ({ name, capital, pop, cur, lang, cont }) => {
+const DataBlock = ({ countryInfo }) => {
+  
+  if (!countryInfo || countryInfo.length !== 6) {
+    return null;
+  }
+  
   return (
     <div id="data">
-      <h1 id="country">{name}</h1>
+      <h1 id="country">{countryInfo[0]}</h1>
       <div id="data-grid">
-        <span id="cap">Capital</span>
-        <p id="cap-dat">{capital}</p>
-        <span id="pop">Population</span>
-        <p id="pop-dat">{pop}</p>
-        <span id="cur">Currency</span>
-        <p id="cur-dat">{Object.keys(cur)[0]}</p>
-        <span id="lang">Language(s)</span>
-        <p id="lan-dat">{Object.values(lang)[0]}</p>
-        <span id="cont">Continent</span>
-        <p id="con-dat">{cont}</p>
+        <span id="cap">Capital :</span>
+        <p id="cap-dat">{countryInfo[1]}</p>
+        <span id="pop">Population :</span>
+        <p id="pop-dat">{countryInfo[2]}</p>
+        <span id="cur">Currency :</span>
+        <p id="cur-dat">{Object.keys(countryInfo[3])[0]}</p>
+        <span id="lang">Language(s) :</span>
+        <p id="lan-dat">{Object.values(countryInfo[4])[0]}</p>
+        <span id="cont">Continent :</span>
+        <p id="con-dat">{countryInfo[5]}</p>
       </div>
     </div>
   )
 }
 
 DataBlock.propTypes = {
-  name: PropTypes.string,
-  capital: PropTypes.string,
-  pop: PropTypes.string,
-  cur: PropTypes.object,
-  lang: PropTypes.object,
-  cont: PropTypes.string,
+  countryInfo: PropTypes.array,
 }
 
-export default DataBlock
+export default DataBlock;

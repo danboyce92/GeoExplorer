@@ -1,15 +1,25 @@
-import PropTypes from 'prop-types';
-
-
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 const Header = () => {
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const headerRefEl = headerRef.current;
+
+    const tl = gsap.timeline();
+      tl.from(headerRefEl, {
+        opacity: 0,
+        x: -500,
+        duration: 2,
+        ease: "back",
+      })
+
+  }, [])
+
   return (
-    <div id='header'>Geo-Explorer</div>
+    <h1 id='header' ref={headerRef}>Geo-Explorer</h1>
   )
-}
+};
 
-Header.propTypes = {
-  position: PropTypes.string,
-}
-
-export default Header
+export default Header;
