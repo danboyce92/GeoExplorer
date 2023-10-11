@@ -6,6 +6,6 @@ const FlagSkeleton = () => {
       <div id="coat"></div>
     </div>
   )
-}
+};
 
 export default FlagSkeleton;

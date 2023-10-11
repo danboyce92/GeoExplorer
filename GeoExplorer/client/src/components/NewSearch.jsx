@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { getCountry } from '../../api/GetCountry';
+import { getCountry } from '../api/GetCountry';
 import gsap from 'gsap';
 
 const NewSearch = ({ retrieveData, errorToggle }) => {
     const [country, setCountry] = useState('');
-
     const barRef = useRef(null);
 
     const retrieveCountry = async (e) => {
@@ -17,7 +16,6 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
       catch (err) {
         errorToggle();
       }
-
     };
 
     useEffect(() => {
@@ -28,7 +26,7 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
           delay: 2,
           duration: 1,
         })
-    }, [])
+    }, []);
 
     return (
       <form onSubmit={retrieveCountry} autoComplete="off" id="new-search" ref={barRef}>
@@ -36,12 +34,12 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
         <input onChange={(e) => {setCountry(e.target.value)}} required id="new-search-input" placeholder="Country name here.." />
         <button id="new-search-button">Search</button>
       </form>
-    )
-}
+    );
+};
 
 NewSearch.propTypes = {
   retrieveData: PropTypes.func.isRequired,
   errorToggle: PropTypes.func,
-}
+};
 
 export default NewSearch;

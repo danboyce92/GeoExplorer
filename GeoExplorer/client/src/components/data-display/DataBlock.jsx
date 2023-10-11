@@ -1,12 +1,6 @@
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-
 const DataBlock = ({ countryInfo }) => {
-  
-  useEffect(() => {
-
-  }, [])
 
   if (countryInfo.length > 0) {
     return (
@@ -27,12 +21,11 @@ const DataBlock = ({ countryInfo }) => {
     </div>
     )
   }
-
-}
+};
 
 DataBlock.propTypes = {
   countryInfo: PropTypes.array,
   toggleLoading: PropTypes.func,
-}
+};
 
 export default DataBlock;

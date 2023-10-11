@@ -13,7 +13,7 @@ const Header = () => {
         x: -500,
         duration: 2,
         ease: "back",
-      })
+      });
 
   }, [])
 

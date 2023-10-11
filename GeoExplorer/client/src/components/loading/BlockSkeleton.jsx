@@ -1,5 +1,4 @@
 
-
 const BlockSkeleton = () => {
   return (
     <div id="block-skeleton">
@@ -14,6 +13,6 @@ const BlockSkeleton = () => {
       <div className="p-skel"></div>
     </div>
   )
-}
+};
 
-export default BlockSkeleton
+export default BlockSkeleton;

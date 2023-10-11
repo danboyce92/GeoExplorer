@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import DataDisplay from "./components/data-components/DataDisplay";
+import DataDisplay from "./components/data-display/DataDisplay";
 
 function App() {
   return (

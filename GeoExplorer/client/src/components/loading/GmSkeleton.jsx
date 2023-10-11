@@ -6,6 +6,6 @@ const GmSkeleton = () => {
       <div className="gm-text"></div>
     </div>
   )
-}
+};
 
-export default GmSkeleton
+export default GmSkeleton;

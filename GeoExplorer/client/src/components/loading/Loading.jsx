@@ -1,4 +1,3 @@
-
 import BlockSkeleton from "./BlockSkeleton";
 import GmSkeleton from "./GmSkeleton";
 import FlagSkeleton from "./FlagSkeleton";

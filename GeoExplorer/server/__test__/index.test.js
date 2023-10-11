@@ -1,6 +1,8 @@
 const request = require('supertest');
 const express = require('express');
-const app = require('../src/index');
+const app = require('../index');
+
+console.error = jest.fn();
 
 describe('Country search API server', () => {
   it('should respond with country data when a valid country is provided', async () => {
