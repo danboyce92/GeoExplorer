@@ -1,14 +1,16 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import BlockSkeleton from './BlockSkeleton';
+
 
 const DataBlock = ({ countryInfo }) => {
   
-  if (countryInfo.length === 0) {
-    return <BlockSkeleton />
-  }
-  
-  return (
-    <div id="data">
+  useEffect(() => {
+
+  }, [])
+
+  if (countryInfo.length > 0) {
+    return (
+      <div id="data">
       <h1 id="country">{countryInfo[0]}</h1>
       <div id="data-grid">
         <span id="cap">Capital :</span>
@@ -23,11 +25,14 @@ const DataBlock = ({ countryInfo }) => {
         <p id="con-dat">{countryInfo[5]}</p>
       </div>
     </div>
-  )
+    )
+  }
+
 }
 
 DataBlock.propTypes = {
   countryInfo: PropTypes.array,
+  toggleLoading: PropTypes.func,
 }
 
 export default DataBlock;

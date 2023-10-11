@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaChevronDown } from "react-icons/fa";
 import DataBlock from "./DataBlock";
 import DataFlag from "./DataFlag";
 import GoogleMaps from "./GoogleMaps";
 import NewSearch from "./NewSearch";
-import LoadingSpinner from './LoadingSpinner';
+import Loading from '../loading/Loading';
 
 const DataDisplay = () => {
     const [data, setData] = useState('');
@@ -14,29 +14,20 @@ const DataDisplay = () => {
     const [gmLink, setGmLink] = useState('');
     const [flag, setFlag] = useState('');
     const [coatArms, setCoatArms] = useState('');
- 
+    const dataRef = useRef(null);
 
     const retrieveData = (dataInput) => {
-      setTimeout(() => {
-        setData(dataInput);
-        setDispTrigger('data-vis');
-        console.log(loading);
-      }, 1000)
-      setDispTrigger('data-none');
-      setLoading(true);
-      console.log(loading)
-
       //Function needs to make blocks visible.
       //Needs to display loading skeletons.
       //Make a request to the server.
       //Replace skeletons when data is available.
-      setDispTrigger('data-vis');
       setLoading(true);
+      setDispTrigger('data-none');
       setData(dataInput);
+      dataRef.current = dataInput;
     }
 
     useEffect(() => {
-
       if (data) {
         const countryData = data[0];
         const newCountryInfo = [
@@ -51,11 +42,12 @@ const DataDisplay = () => {
         setGmLink(countryData.maps['googleMaps']);
         setFlag(countryData.flags.svg);
         setCoatArms(countryData.coatOfArms.svg);
-        setLoading(false);
-        console.log(loading);
 
+        setTimeout(() => {
+          setDispTrigger('data-vis');
+          setLoading(false);
+        }, 500)
       }
-
     }, [data])
 
     return (
@@ -65,7 +57,7 @@ const DataDisplay = () => {
             <p id="instruction">Enter the name of a country you wish to learn more about!</p>
           </div>
             { loading &&
-              <LoadingSpinner />
+              <Loading />
             }
 
           <div id={`${dispTrigger}`}>
@@ -78,7 +70,6 @@ const DataDisplay = () => {
             </div>
           </div>
         </div>
-
     )
 }
 

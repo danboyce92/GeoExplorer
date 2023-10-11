@@ -8,8 +8,11 @@
 @import './components/data-components/data-block.scss';
 @import './components/data-components/google-maps.scss';
 @import './components/data-components/data-flag.scss';
-@import './components/data-components/loading-spinner.scss';
-@import './components/data-components/block-skeleton.scss';
+@import './components/loading-styles/loading-spinner.scss';
+@import './components/loading-styles/loading.scss';
+@import './components/loading-styles/block-skeleton.scss';
+@import './components//loading-styles/gm-skeleton.scss';
+@import './components/loading-styles/flag-skeleton.scss';
 
 .coolors {
   color: #CFCFEA;
