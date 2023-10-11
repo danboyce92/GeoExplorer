@@ -17,14 +17,13 @@ const DataDisplay = () => {
  
 
     const retrieveData = (dataInput) => {
-      setDispTrigger('data-none');
+      //Function needs to make blocks visible.
+      //Needs to display loading skeletons.
+      //Make a request to the server.
+      //Replace skeletons when data is available.
+      setDispTrigger('data-vis');
       setLoading(true);
-      setTimeout(() => {
-        setData(dataInput);
-        setDispTrigger('data-vis');
-      }, 1000)
-
-
+      setData(dataInput);
     }
 
     useEffect(() => {

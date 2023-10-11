@@ -8,6 +8,7 @@
   margin-top: 40px;
   padding: 0px 10px;
 
+
   #country {
     font-family: 'Roboto', sans-serif;
     font-size: clamp(1.4rem, 5vw, 2rem);
@@ -20,8 +21,8 @@
 
     span {
         font-family: 'Lato', sans-serif;
-        font-size: clamp(1rem, 4vw, 1.6rem);
-        line-height: clamp(1rem, 4vw, 1.6rem);
+        font-size: clamp(1rem, 4vw, 1.7rem);
+        line-height: clamp(1rem, 4vw, 1.7rem);
         font-style: italic;
         font-weight: 700;
         padding-left: 20px;
@@ -30,8 +31,8 @@
     p {
         font-family: 'Roboto', sans-serif;
         font-weight: bold;
-        font-size: clamp(1.2rem, 4vw, 1.9rem);
-        line-height: clamp(1.2rem, 4vw, 1.9rem);
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        line-height: clamp(1.2rem, 4vw, 2rem);
         text-align: center;
     }
   }
