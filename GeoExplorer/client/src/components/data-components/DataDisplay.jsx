@@ -14,17 +14,18 @@ const DataDisplay = () => {
     const [gmLink, setGmLink] = useState('');
     const [flag, setFlag] = useState('');
     const [coatArms, setCoatArms] = useState('');
+    const [error, setError] = useState(false);
     const dataRef = useRef(null);
 
     const retrieveData = (dataInput) => {
-      //Function needs to make blocks visible.
-      //Needs to display loading skeletons.
-      //Make a request to the server.
-      //Replace skeletons when data is available.
+      setError(false);
       setLoading(true);
       setDispTrigger('data-none');
       setData(dataInput);
       dataRef.current = dataInput;
+    }
+    const errorToggle = () => {
+      setError(!error);
     }
 
     useEffect(() => {
@@ -42,7 +43,6 @@ const DataDisplay = () => {
         setGmLink(countryData.maps['googleMaps']);
         setFlag(countryData.flags.svg);
         setCoatArms(countryData.coatOfArms.svg);
-
         setTimeout(() => {
           setDispTrigger('data-vis');
           setLoading(false);
@@ -53,13 +53,16 @@ const DataDisplay = () => {
     return (
         <div id="data-display">
           <div id="search-bar">
-            <NewSearch retrieveData={retrieveData} data={data} />  
-            <p id="instruction">Enter the name of a country you wish to learn more about!</p>
+            <NewSearch retrieveData={retrieveData} data={data} errorToggle={errorToggle} />  
+            {error ? (
+          <p id="error">*Your search yielded no results, check your spelling and try again.</p>
+        ) : (
+          <p id="instruction">Enter the name of a country you wish to learn more about!</p>
+        )}
           </div>
-            { loading &&
-              <Loading />
+            { loading && 
+              <Loading /> 
             }
-
           <div id={`${dispTrigger}`}>
             <DataBlock countryInfo={countryInfo} />
             <GoogleMaps gmLink={gmLink} />

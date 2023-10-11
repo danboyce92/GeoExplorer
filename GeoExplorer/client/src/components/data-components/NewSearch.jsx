@@ -3,15 +3,21 @@ import PropTypes from 'prop-types';
 import { getCountry } from '../../api/GetCountry';
 import gsap from 'gsap';
 
-const NewSearch = ({ retrieveData }) => {
+const NewSearch = ({ retrieveData, errorToggle }) => {
     const [country, setCountry] = useState('');
 
     const barRef = useRef(null);
 
     const retrieveCountry = async (e) => {
       e.preventDefault();
-      const response = await getCountry(country);
-      await retrieveData(response);
+      try {
+        const response = await getCountry(country);
+        await retrieveData(response);
+      }
+      catch (err) {
+        errorToggle();
+      }
+
     };
 
     useEffect(() => {
@@ -35,7 +41,7 @@ const NewSearch = ({ retrieveData }) => {
 
 NewSearch.propTypes = {
   retrieveData: PropTypes.func.isRequired,
-
+  errorToggle: PropTypes.func,
 }
 
 export default NewSearch;
