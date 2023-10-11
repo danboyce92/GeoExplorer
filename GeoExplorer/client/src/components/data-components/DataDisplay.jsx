@@ -26,6 +26,13 @@ const DataDisplay = () => {
       setLoading(true);
       console.log(loading)
 
+      //Function needs to make blocks visible.
+      //Needs to display loading skeletons.
+      //Make a request to the server.
+      //Replace skeletons when data is available.
+      setDispTrigger('data-vis');
+      setLoading(true);
+      setData(dataInput);
     }
 
     useEffect(() => {
