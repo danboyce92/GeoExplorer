@@ -1,0 +1,12 @@
+
+#block-skeleton {
+
+  @include grid-position(1, 2, 1, 5);
+  border-radius: 10px;
+  border: 1px solid #94B0DA;
+  background-color: rgba(148, 176, 218, .4);
+  margin-right: 15px;
+  margin-top: 40px;
+  padding: 0px 10px;
+
+}

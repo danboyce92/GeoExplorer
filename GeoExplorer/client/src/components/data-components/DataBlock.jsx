@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import BlockSkeleton from './BlockSkeleton';
 
 const DataBlock = ({ countryInfo }) => {
   
-  if (!countryInfo || countryInfo.length !== 6) {
-    return null;
+  if (countryInfo.length === 0) {
+    return <BlockSkeleton />
   }
   
   return (

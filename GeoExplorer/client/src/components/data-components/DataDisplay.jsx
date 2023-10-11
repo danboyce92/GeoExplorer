@@ -17,13 +17,14 @@ const DataDisplay = () => {
  
 
     const retrieveData = (dataInput) => {
-      setDispTrigger('data-none');
-      setLoading(true);
       setTimeout(() => {
         setData(dataInput);
         setDispTrigger('data-vis');
+        console.log(loading);
       }, 1000)
-
+      setDispTrigger('data-none');
+      setLoading(true);
+      console.log(loading)
 
     }
 
@@ -44,6 +45,7 @@ const DataDisplay = () => {
         setFlag(countryData.flags.svg);
         setCoatArms(countryData.coatOfArms.svg);
         setLoading(false);
+        console.log(loading);
 
       }
 
