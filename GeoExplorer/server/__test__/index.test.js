@@ -1,15 +1,18 @@
 const request = require('supertest');
-const express = require('express');
 const app = require('../index');
 
 console.error = jest.fn();
+let server;
+
+beforeEach(() => (server = app.listen()));
+afterEach(() => server.close());
 
 describe('Country search API server', () => {
   it('should respond with country data when a valid country is provided', async () => {
-    const response = await request(app).get('/name?country=Canada');
+    const response = await request(app).get('/name?country=Spain');
 
     expect(response.status).toBe(200);
-    expect(response.body[0].name.common).toBe('Canada');
+    expect(response.body[0].name.common).toBe('Spain');
   });
 
   it('should respond with a 400 status and an error message when no country is provided', async () => {

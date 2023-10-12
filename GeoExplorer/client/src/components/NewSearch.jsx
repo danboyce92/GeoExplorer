@@ -14,6 +14,7 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
         await retrieveData(response);
       }
       catch (err) {
+        console.error(err);
         errorToggle();
       }
     };

@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
+const getRequest = require('./getRequest');
 
 const port = 5000;
 
@@ -21,11 +21,8 @@ app.get('/name', async (req, res) => {
 
   try {
     // Make a request to the external API with the user's requested country name
-    const response = await axios.get(
-      `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
-    );
     // Send the fetched data as a JSON response
-    const countryData = await response.data;
+    const countryData = await getRequest(countryName);
     res.json(countryData);
   } catch (error) {
     console.error('An error occurred:', error);
@@ -33,8 +30,11 @@ app.get('/name', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+//Prevents server from being left open when tests are running
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
 
 module.exports = app;
