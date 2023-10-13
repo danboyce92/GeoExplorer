@@ -6,7 +6,7 @@ const GoogleMaps = ({ countryInfo }) => {
     <div id="google-maps">
         {
           countryInfo &&
-          <h1 id="prompt">Show me on <br/> <a rel="noreferrer" target="_blank" id="gm-link" href={`${countryInfo[6]}`}>Google Maps</a></h1>
+          <h1 id="prompt">Show me on <br/> <a rel="noreferrer" target="_blank" id="gm-link" href={`${countryInfo[6]}`} data-test="search-test-gmlink">Google Maps</a></h1>
         }     
     </div>
   )

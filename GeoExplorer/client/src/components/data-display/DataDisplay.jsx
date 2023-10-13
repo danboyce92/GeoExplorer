@@ -52,7 +52,7 @@ const DataDisplay = () => {
             { loading && 
               <Loading /> 
             }
-          <div id={`${dispTrigger}`}>
+          <div id={`${dispTrigger}`} data-test="search-test-block">
             <DataBlock countryInfo={countryInfo} />
             <GoogleMaps countryInfo={countryInfo} />
             <DataFlag countryInfo={countryInfo} />

@@ -30,7 +30,7 @@ app.get('/name', async (req, res) => {
   }
 });
 
-//Prevents server from being left open when tests are running
+//If statement prevents server from being left open when tests are running
 if (require.main === module) {
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

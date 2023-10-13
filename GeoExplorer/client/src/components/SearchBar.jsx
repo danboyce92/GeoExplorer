@@ -7,9 +7,9 @@ const SearchBar = ({ retrieveData, data, errorToggle, error }) => {
       <NewSearch retrieveData={retrieveData} data={data} errorToggle={errorToggle} />  
 
       {error ? (
-        <p id="error">*Your search yielded no results, check your spelling and try again.</p>
+        <p data-test="search-test-error" id="error">*Your search yielded no results, check your spelling and try again.</p>
         ) : (
-        <p id="instruction">Enter the name of a country you wish to learn more about!</p>
+        <p data-test="search-test-inst" id="instruction">Enter the name of a country you wish to learn more about!</p>
       )}
     </div>
   );
