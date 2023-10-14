@@ -1,15 +1,14 @@
 describe('Search functionality', () => {
   beforeEach(() => {
-    cy.viewport(1000, 1200);
     cy.visit('/');
     // cy.wait(4000);
   });
 
   it('Error message should appear if invalid search is requested.', () => {
-    cy.getByDataTest('search-test-button').should('contain.text', 'Search');
+    cy.getSearchForm().find('button').should('contain.text', 'Search');
 
-    cy.getByDataTest('search-test-input').type('abcde');
-    cy.getByDataTest('search-test-button').click();
+    cy.getSearchForm().find('input').type('abcde');
+    cy.getSearchForm().find('button').click();
 
     cy.getByDataTest('search-test-error')
       .should('be.visible')
@@ -20,22 +19,23 @@ describe('Search functionality', () => {
   });
 
   it('Data display block should remain invisible if an invalid request is made', () => {
-    cy.getByDataTest('search-test-input').type('abcde');
-    cy.getByDataTest('search-test-button').click();
+    cy.getSearchForm().find('input').type('abcde');
+    cy.getSearchForm().find('button').click();
 
     cy.getByDataTest('search-test-block').should('not.be.visible');
   });
 
-  it('Instruction message should remain visible if valid search is processed.', () => {
-    cy.getByDataTest('search-test-input').type('Spain');
-    cy.getByDataTest('search-test-button').click();
+  it('Instruction message should remain visible and Error message should be invisible if valid search is processed.', () => {
+    cy.getSearchForm().find('input').type('Spain');
+    cy.getSearchForm().find('button').click();
 
     cy.getByDataTest('search-test-inst').should('be.visible');
+    cy.getByDataTest('search-test-error').should('not.exist');
   });
 
   it('Should produce a link to google maps', () => {
-    cy.getByDataTest('search-test-input').type('Greece');
-    cy.getByDataTest('search-test-button').click();
+    cy.getSearchForm().find('input').type('Greece');
+    cy.getSearchForm().find('button').click();
 
     cy.getByDataTest('search-test-gmlink')
       .invoke('attr', 'href')
@@ -43,8 +43,8 @@ describe('Search functionality', () => {
   });
 
   it('Should have two svgs populate the flag and coat of arms component', () => {
-    cy.getByDataTest('search-test-input').type('Italy');
-    cy.getByDataTest('search-test-button').click();
+    cy.getSearchForm().find('input').type('Italy');
+    cy.getSearchForm().find('button').click();
 
     cy.getByDataTest('search-test-flag')
       .invoke('attr', 'src')

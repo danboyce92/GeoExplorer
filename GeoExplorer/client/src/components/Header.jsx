@@ -15,7 +15,7 @@ const Header = () => {
         ease: "back",
       });
 
-  }, [])
+  }, []);
 
   return (
     <h1 id='header' ref={headerRef}>Geo-Explorer</h1>

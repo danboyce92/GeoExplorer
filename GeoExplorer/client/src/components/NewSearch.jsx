@@ -30,10 +30,10 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
     }, []);
 
     return (
-      <form onSubmit={retrieveCountry} autoComplete="off" id="new-search" ref={barRef}>
+      <form data-test="search-test-form" onSubmit={retrieveCountry} autoComplete="off" id="new-search" ref={barRef}>
         <label id="new-search-label">New Search</label>
-        <input data-test="search-test-input" onChange={(e) => {setCountry(e.target.value)}} required id="new-search-input" placeholder="Country name here.." />
-        <button data-test="search-test-button" id="new-search-button">Search</button>
+        <input onChange={(e) => {setCountry(e.target.value)}} required id="new-search-input" placeholder="Country name here.." />
+        <button id="new-search-button">Search</button>
       </form>
     );
 };

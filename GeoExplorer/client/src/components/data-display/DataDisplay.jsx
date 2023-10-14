@@ -5,43 +5,33 @@ import GoogleMaps from "./GoogleMaps";
 import Loading from '../loading/Loading';
 import SearchBar from '../SearchBar';
 import Scroll from '../Scroll';
+import useBoolToggle from '../hooks/BoolToggle';
+import { processCountryData } from '../ProcessCountryData';
 
 const DataDisplay = () => {
     const [data, setData] = useState();
     const [dispTrigger, setDispTrigger] = useState('data-none');
-    const [loading, setLoading] = useState(false);
     const [countryInfo, setCountryInfo] = useState([]);
-    const [error, setError] = useState(false);
+    const [error, toggleError] = useBoolToggle(false);
+    const [loading, toggleLoading] = useBoolToggle(false);
 
     const retrieveData = (dataInput) => {
-      setError(false);
-      setLoading(true);
+      toggleError(false);
+      toggleLoading();
       setDispTrigger('data-none');
       setData(dataInput);
     };
 
     const errorToggle = () => {
-      setError(!error);
+      toggleError();
     };
 
     useEffect(() => {
       if (data) {
-        const countryData = data[0];
-        const newCountryInfo = [
-          countryData.name["official"],
-          countryData.capital[0],
-          countryData.population.toLocaleString(),
-          countryData.currencies,
-          countryData.languages,
-          countryData.continents[0],
-          countryData.maps['googleMaps'],
-          countryData.flags.svg,
-          countryData.coatOfArms.svg
-        ];
-        setCountryInfo(newCountryInfo);
+        setCountryInfo(processCountryData(data));
         setTimeout(() => {
           setDispTrigger('data-vis');
-          setLoading(false);
+          toggleLoading();
         }, 500)
       }
     }, [data]);

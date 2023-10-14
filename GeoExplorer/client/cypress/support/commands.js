@@ -24,6 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add('getSearchForm', () => {
+  return cy.get(`[data-test="search-test-form"]`);
+});
+
 Cypress.Commands.add('getByDataTest', (dataTestSelector) => {
   return cy.get(`[data-test="${dataTestSelector}"]`);
 });
