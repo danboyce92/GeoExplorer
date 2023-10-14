@@ -55,6 +55,7 @@
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     padding: 20px 0px;
+    width: clamp(280px, 60vw, 70%);
   
     #new-search-label {
       @include grid-position(1, 2, 1, 2);
@@ -63,10 +64,9 @@
     }
     #new-search-input {
       @include grid-position(1, 2, 1, 2);
-      
       margin: auto;
       height: 60px;
-      width: clamp(220px, 50vw, 80%);
+      width: clamp(220px, 50vw, 100%);
       
     }
 
@@ -75,7 +75,7 @@
       margin: auto;
       margin-top: 10px;
       height: 60px;
-      width: clamp(220px, 50vw, 80%);
+      width: clamp(220px, 50vw, 100%);
       
     }
     #new-search-button:hover {

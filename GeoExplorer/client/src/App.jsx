@@ -9,7 +9,7 @@ function App() {
         <DataDisplay />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

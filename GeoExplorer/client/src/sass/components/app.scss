@@ -6,7 +6,7 @@ html {
 
   #app {
     width: 100%;
-    height: 130%;
+    height: fit-content;
     background-image: url("../imgs/bground.jpg");
     background-size: cover;
     background-position: right center;
@@ -14,7 +14,7 @@ html {
     position: absolute;
     top: 0%;
     left: 0%;
-    overflow: hidden;
+
 
   
     #above-shader {
@@ -40,18 +40,17 @@ html::-webkit-scrollbar {
 }
 
 
-@media screen and (max-width: 750px) {
+// @media screen and (max-width: 750px) {
   
-  html {
+//   html {
 
-    #app {
-      overflow: visible;
-      height: 180%;
-    }
-  }
+//     #app {
+//       overflow: visible;
+//       height: fit-content;
+//     }
+//   }
 
 
-}
-
+// }
 
 
