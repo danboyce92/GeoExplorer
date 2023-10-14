@@ -42,6 +42,7 @@
 
   #data-flag {
     @include grid-position(1, 2, 6, 9);
+    height: 33%;
     margin: 20px 0px;
     padding: 0;
     z-index: 2;
@@ -49,6 +50,7 @@
 
     #flag-obj {
       scale: .48;
+      top: 0%;
     }
 
     #coat-arms {

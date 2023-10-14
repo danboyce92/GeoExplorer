@@ -43,10 +43,11 @@ const DataDisplay = () => {
               <Loading /> 
             }
           <div id={`${dispTrigger}`} data-test="search-test-block">
+            <Scroll />
             <DataBlock countryInfo={countryInfo} />
             <GoogleMaps countryInfo={countryInfo} />
             <DataFlag countryInfo={countryInfo} />
-            <Scroll />
+
           </div>
         </div>
     )

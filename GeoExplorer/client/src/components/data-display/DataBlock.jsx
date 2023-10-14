@@ -13,7 +13,7 @@ const DataBlock = ({ countryInfo }) => {
         <p id="pop-dat">{countryInfo[2]}</p>
         <span id="cur">Currency :</span>
         <p id="cur-dat">{Object.keys(countryInfo[3])[0]}</p>
-        <span id="lang">Language(s) :</span>
+        <span id="lang">Language :</span>
         <p id="lan-dat">{Object.values(countryInfo[4])[0]}</p>
         <span id="cont">Continent :</span>
         <p id="con-dat">{countryInfo[5]}</p>

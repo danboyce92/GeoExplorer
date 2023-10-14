@@ -21,8 +21,8 @@
 
     span {
         font-family: 'Lato', sans-serif;
-        font-size: clamp(1rem, 4vw, 1.7rem);
-        line-height: clamp(1rem, 4vw, 1.7rem);
+        font-size: clamp(1rem, 5vw, 1.7rem);
+        line-height: clamp(1rem, 5vw, 1.7rem);
         font-style: italic;
         font-weight: 700;
         padding-left: 20px;
@@ -32,8 +32,8 @@
     p {
         font-family: 'Roboto', sans-serif;
         font-weight: bold;
-        font-size: clamp(1.2rem, 4vw, 2rem);
-        line-height: clamp(1.2rem, 4vw, 2rem);
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        line-height: clamp(1.2rem, 5vw, 2rem);
         text-align: center;
     }
   }
@@ -43,7 +43,7 @@
 @media screen and (max-width: 750px) {
   
 #data {
-  @include grid-position(1, 2, 2, 5);
+  width: 100%;
   margin-right: 0;
   height: fit-content;
   z-index: 2;
