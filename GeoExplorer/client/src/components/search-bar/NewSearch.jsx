@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { getCountry } from '../api/GetCountry';
+import { getCountry } from '../../api/GetCountry';
+import { getAllCountries } from '../../api/GetAllCountries';
+import { randomCountry, randomNumber } from '../functions/RandomCountry';
 import gsap from 'gsap';
 
 const NewSearch = ({ retrieveData, errorToggle }) => {
     const [country, setCountry] = useState('');
+    const [allCountries, setAllCountries] = useState([]);
     const barRef = useRef(null);
 
     const retrieveCountry = async (e) => {
@@ -19,7 +22,16 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
       }
     };
 
+    const randomRequest = async () => {
+      //This will generate a random name from the array
+      //Send this to the get country api like a normal request
+      const chosenRandomCountry = await allCountries[randomNumber()];
+      const check = await randomCountry(randomNumber());
+      console.log(check);
+    }
+
     useEffect(() => {
+      setAllCountries(randomCountry());
       const barRefEl = barRef.current;
       const tl = gsap.timeline();
         tl.from(barRefEl, {
@@ -30,11 +42,15 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
     }, []);
 
     return (
-      <form data-test="search-test-form" onSubmit={retrieveCountry} autoComplete="off" id="new-search" ref={barRef}>
+      <div id="button-grid" ref={barRef}>
+      <button onClick={randomRequest} id="random-button">Random</button>
+      <form data-test="search-test-form" autoComplete="off" id="new-search">
         <label id="new-search-label">New Search</label>
         <input onChange={(e) => {setCountry(e.target.value)}} required id="new-search-input" placeholder="Country name here.." />
-        <button id="new-search-button">Search</button>
+        <button onClick={retrieveCountry} id="new-search-button">Search</button>
       </form>
+      </div>
+
     );
 };
 

@@ -1,0 +1,97 @@
+#button-grid  {
+  @include grid-position(1, 2, 1, 2);
+  @include container-props();
+  display: grid;
+  padding: 25px 20px;
+  padding-top: 0;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  #random-button {
+    @include grid-position(1, 2, 2, 3);
+    @include search-button(#49c7ee);
+  }
+
+  #new-search {
+    @include grid-position(2, 5, 1, 3);
+    font-family: 'Lato', sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  
+    #new-search-label {
+      @include grid-position(1, 3, 1, 2);
+      margin: 10px;
+      text-align: center;
+      font-size: clamp(1rem, 6vw, 1.4rem);
+      font-weight: bold;
+    }
+  
+    #new-search-input {
+      @include grid-position(1, 3, 2, 3);
+      font-size: clamp(1rem, 6vw, 1.4rem);
+      text-align: center;
+      margin: 0px 20px;
+      border-radius: 5px;
+    }
+  
+    #new-search-input::placeholder {
+      font-style: italic;
+    }
+  
+    #new-search-button {
+      @include grid-position(3, 4, 2, 3);
+      @include search-button(#77DB54);
+    }
+  }
+  #new-search-button:hover, #random-button:hover {
+    scale: 1.1;
+    color: white;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #button-grid  {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    padding-bottom: 05px;
+    width: clamp(240px, 60vw, 70%);
+    margin: auto;
+
+    #random-button {
+      @include grid-position(1, 2, 3, 4);
+      padding: 20px 0px;
+      height: 60px;
+      width: clamp(220px, 50vw, 70vw);
+      margin: auto;
+    }
+
+    #new-search {
+      @include grid-position(1, 2, 1, 3);
+      grid-template-columns: 1fr;
+      padding: 05px;
+
+      margin: auto;
+    
+      #new-search-label {
+        @include grid-position(1, 2, 1, 2);
+        visibility: hidden;
+      }
+  
+      #new-search-input {
+        @include grid-position(1, 2, 1, 2);
+        margin: auto;
+        height: 60px;
+        width: clamp(220px, 50vw, 70vw);
+      }
+  
+      #new-search-button {
+        @include grid-position(1, 2, 2, 3);
+        margin: auto;
+        margin-top: 10px;
+        height: 60px;
+        width: clamp(220px, 50vw, 100%);
+      }
+    }
+  }
+}

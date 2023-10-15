@@ -6,8 +6,8 @@ const Loading = () => {
   return (
     <div id="loading-grid">
       <BlockSkeleton />
-      <GmSkeleton />
       <FlagSkeleton />
+      <GmSkeleton />
     </div>
   );
 };

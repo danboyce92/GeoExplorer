@@ -3,10 +3,10 @@ import DataBlock from "./DataBlock";
 import DataFlag from "./DataFlag";
 import GoogleMaps from "./GoogleMaps";
 import Loading from '../loading/Loading';
-import SearchBar from '../SearchBar';
+import SearchBar from '../search-bar/SearchBar';
 import Scroll from '../Scroll';
-import useBoolToggle from '../hooks/BoolToggle';
-import { processCountryData } from '../ProcessCountryData';
+import useBoolToggle from '../../hooks/BoolToggle';
+import { processCountryData } from '../functions/ProcessCountryData';
 
 const DataDisplay = () => {
     const [data, setData] = useState();
@@ -33,7 +33,7 @@ const DataDisplay = () => {
           setDispTrigger('data-vis');
           toggleLoading();
         }, 500)
-      }
+      };
     }, [data]);
 
     return (
@@ -45,12 +45,11 @@ const DataDisplay = () => {
           <div id={`${dispTrigger}`} data-test="search-test-block">
             <Scroll />
             <DataBlock countryInfo={countryInfo} />
-            <GoogleMaps countryInfo={countryInfo} />
             <DataFlag countryInfo={countryInfo} />
-
+            <GoogleMaps countryInfo={countryInfo} />
           </div>
         </div>
-    )
-}
+    );
+};
 
 export default DataDisplay;

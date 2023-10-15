@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const getRequest = async (country) => {
+const getCountryRequest = async (country) => {
   try {
     const response = await axios.get(
       `https://restcountries.com/v3.1/name/${country}?fullText=true`
@@ -13,4 +13,4 @@ const getRequest = async (country) => {
   }
 };
 
-module.exports = getRequest;
+module.exports = getCountryRequest;

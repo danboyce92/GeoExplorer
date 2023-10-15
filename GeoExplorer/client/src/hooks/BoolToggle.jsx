@@ -12,7 +12,6 @@ const useBoolToggle = (initialState = false) => {
   };
 
   return [value, toggle];
-
 }
 
 export default useBoolToggle;

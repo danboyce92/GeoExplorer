@@ -19,8 +19,8 @@ const DataBlock = ({ countryInfo }) => {
         <p id="con-dat">{countryInfo[5]}</p>
       </div>
     </div>
-    )
-  }
+    );
+  };
 };
 
 DataBlock.propTypes = {

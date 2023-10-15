@@ -1,5 +1,5 @@
 const mockAxios = require('axios');
-const getRequest = require('../getRequest');
+const getCountryRequest = require('../axios-requests/getCountryRequest');
 
 jest.mock('axios');
 
@@ -8,7 +8,7 @@ describe('Country search without API', () => {
     const country = [{ name: { common: 'Spain' } }];
     mockAxios.get.mockResolvedValueOnce({ data: country });
 
-    const response = await getRequest('Spain');
+    const response = await getCountryRequest('Spain');
     expect(response[0].name.common).toBe('Spain');
   });
 
@@ -17,7 +17,7 @@ describe('Country search without API', () => {
     mockAxios.get.mockRejectedValueOnce(error);
 
     try {
-      const response = await getRequest('NotARealCountry');
+      const response = await getCountryRequest('NotARealCountry');
     } catch (error) {
       expect(error.message).toBe('Console error thrown');
     }

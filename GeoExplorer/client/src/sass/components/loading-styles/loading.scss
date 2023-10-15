@@ -1,17 +1,15 @@
-
 #loading-grid {
   @include grid-position(1, 2, 2, 8);
   display: grid; 
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 90%;
-
 }
 
-
 @media screen and (max-width: 750px) {
-
   #loading-grid {
-    grid-template-rows: repeat(8, 1fr);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }

@@ -9,7 +9,7 @@ const DataFlag = ({ countryInfo }) => {
       <div className='flag-text'>Coat of Arms</div>
       <img id="coat-arms" src={`${countryInfo[8]}`} data-test="search-test-coat" />
     </div>
-  )
+  );
 };
 
 DataFlag.propTypes = {

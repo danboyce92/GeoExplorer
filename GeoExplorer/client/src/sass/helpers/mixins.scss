@@ -5,3 +5,31 @@
   grid-row-start: $rowS;
   grid-row-end: $rowE;
 }
+
+@mixin container-props() {
+  border: 1px solid #94B0DA;
+  background-color: rgba(148, 176, 218, .3);
+  border-radius: 10px;
+}
+
+@mixin search-button($color) {
+  width: 100%;
+  padding: 5px 0;
+  font-size: clamp(1rem, 6vw, 1.4rem);
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: $color;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin: auto;
+  
+}
+
+@mixin flag-coat-skeleton() {
+  background-color: #94B0DA;
+  margin: auto;
+  height: 7rem;
+  width: 70%;
+  border-radius: 5px;
+  animation: anim 1s linear infinite alternate;
+}

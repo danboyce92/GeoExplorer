@@ -1,14 +1,12 @@
 
 #data {
   @include grid-position(1, 2, 1, 5);
-  border-radius: 10px;
-  border: 1px solid #94B0DA;
-  background-color: rgba(148, 176, 218, .4);
+  @include container-props();
   margin-right: 15px;
   margin-top: 40px;
   padding: 0px 10px;
 
-
+ 
   #country {
     font-family: 'Roboto', sans-serif;
     font-size: clamp(1.4rem, 5vw, 2rem);
@@ -42,19 +40,19 @@
 
 @media screen and (max-width: 750px) {
   
-#data {
-  width: 100%;
-  margin-right: 0;
-  height: fit-content;
-  z-index: 2;
+  #data {
+    width: 100%;
+    margin-right: 0;
+    height: fit-content;
+    z-index: 2;
 
-  #data-grid {
-    span {
-      line-height: clamp(.8rem, 2vw, 1rem);
-    }
-    p {
-      line-height: clamp(.8rem, 2vw, 1rem);
+    #data-grid {
+      span {
+        line-height: clamp(.8rem, 2vw, 1rem);
+      }
+      p {
+        line-height: clamp(.8rem, 2vw, 1rem);
+      }
     }
   }
-}
 }
