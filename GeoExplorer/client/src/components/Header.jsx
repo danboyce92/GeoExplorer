@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <h1 id='header' ref={headerRef}>Geo-Explorer</h1>
-  )
+  );
 };
 
 export default Header;

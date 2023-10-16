@@ -1,37 +1,30 @@
 import { getAllCountries } from '../../api/GetAllCountries';
-
-const countries = [];
-
-// export const getAllCountries = async () => {
-//   const response = await fetch('https://restcountries.com/v3.1/all');
-
-//   const countriesJson = await response.json();
-
-//   for (let country of countriesJson) {
-//     countries.push(country.name['common']);
-//   }
-
-//   return countries;
-// };
+import { getCountry } from '../../api/GetCountry';
 
 export const randomNumber = () => {
   const number = Math.floor(Math.random() * 251);
   return number;
 };
 
-export const randomCountryRequest = async () => {
-  const randomCountry = countries[randomNumber];
-  const response = await fetch(
-    `https://restcountries.com/v3.1/name/${randomCountry}?fullText=true`
-  );
-  return response.json();
-};
-
-export const randomCountry = async (num) => {
+//Creates an array of all country names in API
+export const randomCountry = async () => {
   const all = await getAllCountries();
   const nameArray = [];
   for (let country of all) {
     nameArray.push(country.name['common']);
   }
-  return nameArray[num];
+  return nameArray;
+};
+
+//Takes a random name from countries array and makes request to API
+export const randomRequest = async (all, retrieveData, errTogg) => {
+  const chosenRandomCountry = await all[randomNumber()];
+
+  try {
+    const response = await getCountry(chosenRandomCountry);
+    await retrieveData(response);
+  } catch (err) {
+    console.error(err);
+    errTogg();
+  }
 };

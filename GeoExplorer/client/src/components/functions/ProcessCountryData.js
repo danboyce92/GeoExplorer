@@ -1,3 +1,4 @@
+//Sorts the data I want to take and places into an array for state
 export const processCountryData = (data) => {
   const countryData = data[0];
   const newCountryInfo = [

@@ -1,4 +1,3 @@
-
 const BlockSkeleton = () => {
   return (
     <div id="block-skeleton">
@@ -12,7 +11,7 @@ const BlockSkeleton = () => {
       <div className="span-skel"></div>
       <div className="p-skel"></div>
     </div>
-  )
+  );
 };
 
 export default BlockSkeleton;
