@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 import na from '../../imgs/na.svg';
+import useBoolToggle from '../../hooks/BoolToggle';
 
 const DataFlag = ({ countryInfo }) => {
+  const [isLoading, toggleLoading] = useBoolToggle(true);
 
   return (
     <div id="data-flag">
       <div className='flag-text'>National Flag</div>
       <img id="flag-obj" src={`${countryInfo[7]}`} data-test="search-test-flag" />     
       <div className='flag-text'>Coat of Arms</div>
-      <img id="coat-arms" src={`${countryInfo[8] || na}`} data-test="search-test-coat" />
+      <img id="coat-arms" src={`${countryInfo[8] || na}`} data-test="search-test-coat" onLoad={() => {toggleLoading(false)}} />
+      {isLoading && <div id="coat">Loading</div>}
     </div>
   );
 };

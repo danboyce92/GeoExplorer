@@ -4,7 +4,7 @@ Geo-Explorer is a web app that upon a user's request, communicates with the publ
 
 ## Installation
 
-If you want to use this app, you can navigate to https://123abc.com to access the live site. Alternatively, if you wish to install the app locally, you can do so by following the instructions below.
+If you want to use this app, you can navigate to https://geo-explorer-henna.vercel.app to access the live site. Alternatively, if you wish to install the app locally, you can do so by following the instructions below.
 
 1. Open a terminal and navigate to the empty directory you want to store the app in.
 
@@ -56,17 +56,17 @@ There has also been a random button added to the search bar. This will select a 
 
 This app is pretty simple in nature and now that the core functionality has been achieved, considerations on where it could be taken could be contemplated.
 
-Adding a random button that would return a random country from the API seemed like an interesting addition and was relatively straightforward to implement. **This feature was added**
+Adding a random button that would return a random country from the API seemed like an interesting addition and was relatively straightforward to implement. **This feature was added.**
 
 If there was more time to implement new features, one that could be interesting or useful could be adding a backward and a forward button. By implementing a linked list, it could be possible to add a forward and backward button to move through previous searches.
 
-Another idea that could be useful might be to add an advanced button that opens a dropdown menu that lets the user decide what information they are looking for. Instead of trying to find space on th ui to display all the information, you could let the user declare what they are looking for and then display it for them.
+Another idea that could be useful might be to add an advanced button that opens a dropdown menu that lets the user decide what information they are looking for. Instead of trying to find space in the ui to display all the information, you could let the user declare what they are looking for and then display it for them.
 
 ## Final Notes
 
 _Frontend design & Ui usability_
 
-This Ui was designed with simplicity and ease of use in mind. Conscious of visual-hierarchy the aim was to make it as easy as possible to understand.
+This Ui was designed with simplicity and ease of use in mind. Conscious of visual-hierarchy the aim was to make it as easy as possible to use and understand.
 
 _Quality of country information being rendered_
 
