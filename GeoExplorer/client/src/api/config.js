@@ -1,4 +1,4 @@
-export const url = 'http://localhost:5000/';
+export const url = 'https://geo-explorer.onrender.com/';
 
 //https://restcountries.com/v3.1/
 
