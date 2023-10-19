@@ -27,12 +27,10 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
   const retrieveCountry = async (e) => {
     e.preventDefault();
     try {
-      const response = await getCountryRequest();
-      await retrieveData(response);
-    }
-    catch (err) {
-      console.error(err);
-      errorToggle();
+      const response = await dispatch(getCountryRequest());
+      console.log(response);
+    } catch (error) {
+      // Handle error
     }
   };
 

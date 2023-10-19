@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { selectCountryInfo } from '../../store/selectors/CountryInfoSelector';
 
-const GoogleMaps = ({ countryInfo }) => {
+const GoogleMaps = () => {
   
+  const countryInfo = useSelector((state) => selectCountryInfo(state));
+
   return (
     <div id="google-maps">
       { countryInfo &&

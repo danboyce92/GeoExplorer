@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { selectCountryInfo } from '../../store/selectors/CountryInfoSelector';
 
-const DataBlock = ({ countryInfo }) => {
+const DataBlock = () => {
+
+  const countryInfo = useSelector((state) => selectCountryInfo(state));
 
   if (countryInfo.length > 0) {
     return (

@@ -5,7 +5,7 @@ export const getCountryRequest = createAsyncThunk(
   'countries/getCountryRequest',
   async (_, { getState }) => {
     const state = getState();
-    const country = state.searchBar.countryInput;
+    const country = state.country.countryInput;
 
     try {
       const response = await fetch(`${url}name?country=${country}`);

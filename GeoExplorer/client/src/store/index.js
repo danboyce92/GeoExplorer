@@ -1,10 +1,30 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { searchBarReducer, setCountryInput } from './slice/SearchBarSlice';
+import {
+  countryReducer,
+  setCountryInput,
+  setCountryInfo,
+} from './slice/CountrySlice';
+import {
+  ToggleReducer,
+  setLoading,
+  setError,
+  setDisplay,
+} from './slice/ToggleSlice';
+import { AllCountriesReducer } from './slice/AllCountriesSlice';
 
 const store = configureStore({
   reducer: {
-    searchBar: searchBarReducer,
+    country: countryReducer,
+    toggle: ToggleReducer,
+    allCountries: AllCountriesReducer,
   },
 });
 
-export { store, setCountryInput };
+export {
+  store,
+  setCountryInput,
+  setCountryInfo,
+  setLoading,
+  setError,
+  setDisplay,
+};
