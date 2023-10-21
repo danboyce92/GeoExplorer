@@ -29,7 +29,7 @@ const DataDisplay = () => {
 
     const retrieveData = (dataInput) => {
       toggleError(false);
-      // toggleLoading();
+      dispatch(setLoading());
       dispatch(setDisplay('data-none'));
       setData(dataInput);
     };
@@ -39,12 +39,12 @@ const DataDisplay = () => {
     };
 
     useEffect(() => {
-      if (data.length > 0) {
+      if (data['data'].length > 0) {
         dispatch(setCountryInfo(processCountryData(data)));
         console.log(data);
         setTimeout(() => {
           dispatch(setDisplay('data-vis'));
-          dispatch(setLoading());
+          dispatch(setLoading(false));
         }, 500)
       };
     }, [data]);

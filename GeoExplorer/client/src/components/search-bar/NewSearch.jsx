@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountrySelector } from '../../store/selectors/CountrySelector';
 import { getCountriesSelector } from '../../store/selectors/AllCountriesSelector';
-import { setCountryInput } from '../../store';
+import { selectData } from '../../store/selectors/DataSelector';
+import { setCountryInput, setLoading } from '../../store';
 import { getAllCountries } from '../../store/thunks/GetAllCountriesThunk';
 import { getCountryRequest } from '../../store/thunks/GetCountryRequestThunk';
 import { getCountry } from '../../api/GetCountry';
 import { randomCountry, randomRequest } from '../functions/RandomCountry';
 import gsap from 'gsap';
+import { selectLoading } from '../../store/selectors/LoadingSelector';
 
 const NewSearch = ({ retrieveData, errorToggle }) => {
   const dispatch = useDispatch();
@@ -18,6 +20,8 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
 
   const country = useSelector(getCountrySelector);
   const allCountries = useSelector(getCountriesSelector);
+  const data = useSelector(selectData);
+
 
   // const setCountriesArray = async () => {
   //   const response = await randomCountry();
@@ -27,8 +31,11 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
   const retrieveCountry = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(getCountryRequest());
-      console.log(response);
+      dispatch(setLoading(true));
+      dispatch(getCountryRequest(country));
+      // console.log(country);
+      // console.log(response);
+      // console.log(data['data'][0]);
     } catch (error) {
       // Handle error
     }

@@ -22,7 +22,6 @@ const CountrySlice = createSlice({
         //console.log('request is pending');
       })
       .addCase(getCountryRequest.fulfilled, (state, action) => {
-        // console.log(action.payload);
         state.data = action.payload;
       })
       .addCase(getCountryRequest.rejected, (state) => {
