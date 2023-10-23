@@ -1,45 +1,40 @@
-import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountrySelector } from '../../store/selectors/CountrySelector';
-import { getCountriesSelector } from '../../store/selectors/AllCountriesSelector';
-import { selectData } from '../../store/selectors/DataSelector';
-import { setCountryInput, setLoading } from '../../store';
 import { getAllCountries } from '../../store/thunks/GetAllCountriesThunk';
 import { getCountryRequest } from '../../store/thunks/GetCountryRequestThunk';
-import { getCountry } from '../../api/GetCountry';
-import { randomCountry, randomRequest } from '../functions/RandomCountry';
+import { returnRandomCountry } from '../functions/RandomCountry';
 import gsap from 'gsap';
-import { selectLoading } from '../../store/selectors/LoadingSelector';
+import { setCountryInput, 
+  setLoading, 
+  setDisplay, 
+  setError, 
+  getCountrySelector, 
+  getCountriesSelector, 
+  selectData } from '../../store';
 
-const NewSearch = ({ retrieveData, errorToggle }) => {
+const NewSearch = () => {
   const dispatch = useDispatch();
-  // const [country, setCountry] = useState('');
-  // const [allCountries, setAllCountries] = useState([]);
   const barRef = useRef(null);
-
   const country = useSelector(getCountrySelector);
   const allCountries = useSelector(getCountriesSelector);
   const data = useSelector(selectData);
 
-
-  // const setCountriesArray = async () => {
-  //   const response = await randomCountry();
-  //   setAllCountries(response);
-  // };
-
   const retrieveCountry = async (e) => {
     e.preventDefault();
-    try {
-      dispatch(setLoading(true));
-      dispatch(getCountryRequest(country));
-      // console.log(country);
-      // console.log(response);
-      // console.log(data['data'][0]);
-    } catch (error) {
-      // Handle error
-    }
+    dispatch(setDisplay('data-none'));
+    dispatch(setLoading(true));
+    dispatch(setError(false));
+    dispatch(getCountryRequest());
+
   };
+
+  const randomButton = () => {
+    const randomCountry = returnRandomCountry(allCountries);
+    dispatch(setCountryInput(randomCountry))
+    dispatch(setLoading(true));
+    dispatch(setDisplay('data-none'));
+    dispatch(getCountryRequest());
+  }
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -54,7 +49,7 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
 
   return (
     <div id="button-grid" ref={barRef}>
-      <button onClick={() => {randomRequest(allCountries, retrieveData, errorToggle)}} id="random-button">Random</button>
+      <button onClick={randomButton} id="random-button">Random</button>
       <form onSubmit={retrieveCountry} data-test="search-test-form" autoComplete="off" id="new-search">
         <label id="new-search-label">New Search</label>
         <input onChange={(e) => {dispatch(setCountryInput(e.target.value))}} required id="new-search-input" placeholder="Country name here.." />
@@ -62,11 +57,6 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
       </form>
     </div>
   );
-};
-
-NewSearch.propTypes = {
-  retrieveData: PropTypes.func.isRequired,
-  errorToggle: PropTypes.func,
 };
 
 export default NewSearch;

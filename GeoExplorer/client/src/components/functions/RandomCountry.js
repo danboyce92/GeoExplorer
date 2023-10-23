@@ -1,5 +1,6 @@
 import { getAllCountries } from '../../api/GetAllCountries';
 import { getCountry } from '../../api/GetCountry';
+import { getCountryRequest } from '../../store/thunks/GetCountryRequestThunk';
 
 export const randomNumber = () => {
   const number = Math.floor(Math.random() * 251);
@@ -27,4 +28,8 @@ export const randomRequest = async (all, retrieveData, errTogg) => {
     console.error(err);
     errTogg();
   }
+};
+
+export const returnRandomCountry = (all) => {
+  return all[randomNumber()];
 };

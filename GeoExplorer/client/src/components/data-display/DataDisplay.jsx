@@ -7,11 +7,10 @@ import Loading from '../loading/Loading';
 import SearchBar from '../search-bar/SearchBar';
 import Scroll from '../Scroll';
 import useBoolToggle from '../../hooks/BoolToggle';
-import { setCountryInfo } from '../../store';
+import { setCountryInfo, setDisplay, setLoading, setError } from '../../store';
 import { selectData } from '../../store/selectors/DataSelector';
 import { selectLoading } from '../../store/selectors/LoadingSelector';
 import { processCountryData } from '../functions/ProcessCountryData';
-import { setDisplay, setLoading } from '../../store';
 import { selectDispTrigger } from '../../store/selectors/DisplaySelector';
 
 const DataDisplay = () => {
@@ -27,21 +26,22 @@ const DataDisplay = () => {
     const dispTrigger = useSelector((state) => selectDispTrigger(state));
 
 
-    const retrieveData = (dataInput) => {
-      toggleError(false);
-      dispatch(setLoading());
-      dispatch(setDisplay('data-none'));
-      setData(dataInput);
-    };
+    // const retrieveData = (dataInput) => {
+    //   // toggleError(false);
+    //   dispatch(setLoading());
+    //   dispatch(setDisplay('data-none'));
+    //   setData(dataInput);
+    // };
 
-    const errorToggle = () => {
-      toggleError();
-    };
+    // const errorToggle = () => {
+    //   toggleError();
+    // };
 
     useEffect(() => {
       if (data['data'].length > 0) {
         dispatch(setCountryInfo(processCountryData(data)));
-        console.log(data);
+        // dispatch(setError(false));
+
         setTimeout(() => {
           dispatch(setDisplay('data-vis'));
           dispatch(setLoading(false));
@@ -51,7 +51,7 @@ const DataDisplay = () => {
 
     return (
         <div id="data-display">
-          <SearchBar retrieveData={retrieveData} errorToggle={errorToggle} error={error} />
+          <SearchBar />
             { loading && 
               <Loading /> 
             }

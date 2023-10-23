@@ -11,6 +11,15 @@ import {
   setDisplay,
 } from './slice/ToggleSlice';
 import { AllCountriesReducer } from './slice/AllCountriesSlice';
+import {
+  getCountriesSelector,
+  selectCountryInfo,
+  getCountrySelector,
+  selectData,
+  selectDispTrigger,
+  selectError,
+  selectLoading,
+} from './selectors';
 
 const store = configureStore({
   reducer: {
@@ -27,4 +36,11 @@ export {
   setLoading,
   setError,
   setDisplay,
+  getCountriesSelector,
+  selectCountryInfo,
+  getCountrySelector,
+  selectData,
+  selectDispTrigger,
+  selectError,
+  selectLoading,
 };

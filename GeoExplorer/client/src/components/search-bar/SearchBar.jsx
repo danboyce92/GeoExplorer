@@ -1,10 +1,14 @@
+import { useSelector } from "react-redux";
 import NewSearch from "./NewSearch"
-import PropTypes from 'prop-types';
+import { selectError } from '../../store';
 
-const SearchBar = ({ retrieveData, data, errorToggle, error }) => {
+
+const SearchBar = () => {
+  const error = useSelector((state) => selectError(state));
+
   return (
     <div id="search-bar">
-      <NewSearch retrieveData={retrieveData} data={data} errorToggle={errorToggle} />  
+      <NewSearch />  
 
       {error ? (
         <p data-test="search-test-error" id="error">*Your search yielded no results, check your spelling and try again.</p>
@@ -13,13 +17,6 @@ const SearchBar = ({ retrieveData, data, errorToggle, error }) => {
       )}
     </div>
   );
-};
-
-SearchBar.propTypes = {
-  retrieveData: PropTypes.func,
-  data: PropTypes.array,
-  errorToggle: PropTypes.func,
-  error: PropTypes.bool,
 };
 
 export default SearchBar;
