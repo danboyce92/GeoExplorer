@@ -25,6 +25,7 @@ const NewSearch = () => {
     const randomCountry = returnRandomCountry(allCountries);
     dispatch(setCountryInput(randomCountry))
     dispatch(setDisplay('data-none'));
+    dispatch(setError(false));
     dispatch(getCountryRequest());
   };
 
