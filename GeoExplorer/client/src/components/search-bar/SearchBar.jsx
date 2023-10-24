@@ -1,10 +1,8 @@
 import { useSelector } from "react-redux";
-import NewSearch from "./NewSearch"
-import { selectError } from '../../store';
-
+import NewSearch from "./NewSearch";
 
 const SearchBar = () => {
-  const error = useSelector((state) => selectError(state));
+  const error = useSelector(state => state.toggle.error);
 
   return (
     <div id="search-bar">

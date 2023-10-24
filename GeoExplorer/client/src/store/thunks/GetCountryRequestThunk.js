@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { url } from '../../api/config';
-import { setError, setLoading } from '../slice/ToggleSlice';
+import { setError, setLoading } from '../slices/ToggleSlice';
 
 export const getCountryRequest = createAsyncThunk(
   'countries/getCountryRequest',

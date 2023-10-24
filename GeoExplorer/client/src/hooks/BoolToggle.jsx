@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//No longer used since redux store implementation
 const useBoolToggle = (initialState = false) => {
   const [value, setValue] = useState(initialState);
 

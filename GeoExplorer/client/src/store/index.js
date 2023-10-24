@@ -3,23 +3,14 @@ import {
   countryReducer,
   setCountryInput,
   setCountryInfo,
-} from './slice/CountrySlice';
+} from './slices/CountrySlice';
 import {
   ToggleReducer,
   setLoading,
   setError,
   setDisplay,
-} from './slice/ToggleSlice';
-import { AllCountriesReducer } from './slice/AllCountriesSlice';
-import {
-  getCountriesSelector,
-  selectCountryInfo,
-  getCountrySelector,
-  selectData,
-  selectDispTrigger,
-  selectError,
-  selectLoading,
-} from './selectors';
+} from './slices/ToggleSlice';
+import { AllCountriesReducer } from './slices/AllCountriesSlice';
 
 const store = configureStore({
   reducer: {
@@ -36,11 +27,4 @@ export {
   setLoading,
   setError,
   setDisplay,
-  getCountriesSelector,
-  selectCountryInfo,
-  getCountrySelector,
-  selectData,
-  selectDispTrigger,
-  selectError,
-  selectLoading,
 };

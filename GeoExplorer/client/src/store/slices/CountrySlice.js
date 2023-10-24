@@ -7,6 +7,7 @@ const CountrySlice = createSlice({
     countryInput: '',
     data: [],
     countryInfo: [],
+    isLoading: false,
   },
   reducers: {
     setCountryInput(state, action) {
@@ -20,11 +21,14 @@ const CountrySlice = createSlice({
     builder
       .addCase(getCountryRequest.pending, (state) => {
         //console.log('request is pending');
+        state.isLoading = true;
       })
       .addCase(getCountryRequest.fulfilled, (state, action) => {
         state.data = action.payload;
+        state.isLoading = false;
       })
       .addCase(getCountryRequest.rejected, (state) => {
+        state.isLoading = false;
         console.error('Request Error: Request has encountered a problem');
       });
   },

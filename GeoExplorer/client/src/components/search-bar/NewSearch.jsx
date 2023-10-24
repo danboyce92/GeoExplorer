@@ -5,24 +5,17 @@ import { getCountryRequest } from '../../store/thunks/GetCountryRequestThunk';
 import { returnRandomCountry } from '../functions/RandomCountry';
 import gsap from 'gsap';
 import { setCountryInput, 
-  setLoading, 
   setDisplay, 
-  setError, 
-  getCountrySelector, 
-  getCountriesSelector, 
-  selectData } from '../../store';
+  setError } from '../../store';
 
 const NewSearch = () => {
   const dispatch = useDispatch();
   const barRef = useRef(null);
-  const country = useSelector(getCountrySelector);
-  const allCountries = useSelector(getCountriesSelector);
-  const data = useSelector(selectData);
+  const allCountries = useSelector(state => state.allCountries.countries);
 
   const retrieveCountry = async (e) => {
     e.preventDefault();
     dispatch(setDisplay('data-none'));
-    dispatch(setLoading(true));
     dispatch(setError(false));
     dispatch(getCountryRequest());
 
@@ -31,10 +24,9 @@ const NewSearch = () => {
   const randomButton = () => {
     const randomCountry = returnRandomCountry(allCountries);
     dispatch(setCountryInput(randomCountry))
-    dispatch(setLoading(true));
     dispatch(setDisplay('data-none'));
     dispatch(getCountryRequest());
-  }
+  };
 
   useEffect(() => {
     dispatch(getAllCountries());

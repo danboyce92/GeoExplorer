@@ -6,6 +6,8 @@ Geo-Explorer is a web app that upon a user's request, communicates with the publ
 
 If you want to use this app, you can navigate to https://geo-explorer-henna.vercel.app to access the live site. Alternatively, if you wish to install the app locally, you can do so by following the instructions below.
 
+\*Installing this project requires node and git.
+
 1. Open a terminal and navigate to the empty directory you want to store the app in.
 
 2. In the terminal of the directory run the following git command:
@@ -14,7 +16,7 @@ If you want to use this app, you can navigate to https://geo-explorer-henna.verc
 git clone https://github.com/danboyce92/GeoExplorer.git
 ```
 
-3. After everything is downloaded, in your terminal navigate to the client directory and run the following command:
+3. After everything has been downloaded, in your terminal navigate to the client directory and run the following command:
 
 ```bash
 npm install
@@ -54,9 +56,9 @@ There has also been a random button added to the search bar. This will select a 
 
 ## Moving forward
 
-This app is pretty simple in nature and now that the core functionality has been achieved, considerations on where it could be taken could be contemplated.
+This app is pretty simple in nature and now that the core functionality has been achieved, considerations on where it could be taken can be contemplated.
 
-Adding a random button that would return a random country from the API seemed like an interesting addition and was relatively straightforward to implement. **This feature was added.**
+Adding a random button that would return a random country from the API seemed like an interesting addition and was relatively straightforward to implement. **- This feature has been added.**
 
 If there was more time to implement new features, one that could be interesting or useful could be adding a backward and a forward button. By implementing a linked list, it could be possible to add a forward and backward button to move through previous searches.
 
@@ -71,11 +73,11 @@ This Ui was designed with simplicity and ease of use in mind. Conscious of visua
 _Quality of country information being rendered_
 
 Regarding the quality of the information being rendered, an issue was identified which encouraged the alteration of the endpoint used. It was noticed that when using the regular name endpoint that if you search Ireland, the United Kingdom was the first search to be returned. This was due to Northern Ireland being included among the names associated with the United Kingdom but this endpoint obviously caused inaccuracy that should be addressed.
-The project used the Full Name endpoint instead, there was more accurate responses observed with this endpoint.
+The project used the Full Name endpoint instead, there were more accurate responses observed with this endpoint.
 
 _Loading display logic_
 
-The loading skeleton was a strange hurdle. Because of the nature of React and it's rendering optimizations, I found it difficult to naturally get the skeleton to appear for a moment while the app was waiting for a response from the API. In the end, there was a setTimeout() added which felt slightly manufactured but it still generates the desired results.
+The loading skeleton was a strange hurdle. Because of the nature of React and it's rendering optimizations, I found it difficult to naturally get the skeleton to appear for a moment while the app was waiting for a response from the API. With the introduction of the redux store the loading state was able to be altered in the relevant slice, pending sets loading to true and fulfilled or rejected sets it to false. The only thing about this that is undesirable and could warrant further work is that with some searches it takes longer to load the coat of arms which doesn't look very good.
 
 _Error handling_
 

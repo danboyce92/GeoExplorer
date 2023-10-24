@@ -4,7 +4,6 @@ const ToggleSlice = createSlice({
   name: 'toggle',
   initialState: {
     error: false,
-    loading: false,
     dispTrigger: 'data-none',
   },
   reducers: {
@@ -13,13 +12,6 @@ const ToggleSlice = createSlice({
         state.error = action.payload;
       } else {
         state.error = !state.error;
-      }
-    },
-    setLoading(state, action) {
-      if (action.payload !== undefined) {
-        state.loading = action.payload;
-      } else {
-        state.loading = !state.error;
       }
     },
     setDisplay(state, action) {

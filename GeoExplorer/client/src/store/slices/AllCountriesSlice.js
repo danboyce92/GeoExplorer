@@ -10,10 +10,9 @@ const AllCountries = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllCountries.pending, (state) => {
-        state.isLoading = true;
+        //console.log('loading now true');
       })
       .addCase(getAllCountries.fulfilled, (state, action) => {
-        state.isLoading = false;
         const names = [];
         for (let country of action.payload) {
           names.push(country.name['common']);
@@ -21,7 +20,8 @@ const AllCountries = createSlice({
         state.countries = names;
       })
       .addCase(getAllCountries.rejected, (state) => {
-        state.isLoading = false;
+        //console.log('loading now false');
+        console.error('Error: Error retrieving all countries from API');
       });
   },
 });
