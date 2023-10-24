@@ -6,7 +6,6 @@ const Header = () => {
 
   useEffect(() => {
     const headerRefEl = headerRef.current;
-
     const tl = gsap.timeline();
       tl.from(headerRefEl, {
         opacity: 0,

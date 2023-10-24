@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const DataBlock = ({ countryInfo }) => {
+const DataBlock = () => {
+  const countryInfo = useSelector(state => state.country.countryInfo);
 
   if (countryInfo.length > 0) {
     return (
@@ -21,11 +22,6 @@ const DataBlock = ({ countryInfo }) => {
     </div>
     );
   };
-};
-
-DataBlock.propTypes = {
-  countryInfo: PropTypes.array,
-  toggleLoading: PropTypes.func,
 };
 
 export default DataBlock;

@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import na from '../../imgs/na.svg';
+import { useSelector } from 'react-redux';
 
-const DataFlag = ({ countryInfo }) => {
+const DataFlag = () => {
+  const countryInfo = useSelector(state => state.country.countryInfo);
 
   return (
     <div id="data-flag">
@@ -11,10 +12,6 @@ const DataFlag = ({ countryInfo }) => {
       <img id="coat-arms" src={`${countryInfo[8] || na}`} data-test="search-test-coat" />
     </div>
   );
-};
-
-DataFlag.propTypes = {
-  countryInfo: PropTypes.array,
 };
 
 export default DataFlag;

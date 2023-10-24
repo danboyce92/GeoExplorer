@@ -1,33 +1,35 @@
-import { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { getCountry } from '../../api/GetCountry';
-import { randomCountry, randomRequest } from '../functions/RandomCountry';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCountries } from '../../store/thunks/GetAllCountriesThunk';
+import { getCountryRequest } from '../../store/thunks/GetCountryRequestThunk';
+import { returnRandomCountry } from '../functions/RandomCountry';
 import gsap from 'gsap';
+import { setCountryInput, 
+  setDisplay, 
+  setError } from '../../store';
 
-const NewSearch = ({ retrieveData, errorToggle }) => {
-  const [country, setCountry] = useState('');
-  const [allCountries, setAllCountries] = useState([]);
+const NewSearch = () => {
+  const dispatch = useDispatch();
   const barRef = useRef(null);
-
-  const setCountriesArray = async () => {
-    const response = await randomCountry();
-    setAllCountries(response);
-  };
+  const allCountries = useSelector(state => state.allCountries.countries);
 
   const retrieveCountry = async (e) => {
     e.preventDefault();
-    try {
-      const response = await getCountry(country);
-      await retrieveData(response);
-    }
-    catch (err) {
-      console.error(err);
-      errorToggle();
-    }
+    dispatch(setDisplay('data-none'));
+    dispatch(setError(false));
+    dispatch(getCountryRequest());
+
+  };
+
+  const randomButton = () => {
+    const randomCountry = returnRandomCountry(allCountries);
+    dispatch(setCountryInput(randomCountry))
+    dispatch(setDisplay('data-none'));
+    dispatch(getCountryRequest());
   };
 
   useEffect(() => {
-    setCountriesArray();
+    dispatch(getAllCountries());
     const barRefEl = barRef.current;
     const tl = gsap.timeline();
       tl.from(barRefEl, {
@@ -39,19 +41,14 @@ const NewSearch = ({ retrieveData, errorToggle }) => {
 
   return (
     <div id="button-grid" ref={barRef}>
-      <button onClick={() => {randomRequest(allCountries, retrieveData, errorToggle)}} id="random-button">Random</button>
+      <button onClick={randomButton} id="random-button">Random</button>
       <form onSubmit={retrieveCountry} data-test="search-test-form" autoComplete="off" id="new-search">
         <label id="new-search-label">New Search</label>
-        <input onChange={(e) => {setCountry(e.target.value)}} required id="new-search-input" placeholder="Country name here.." />
+        <input onChange={(e) => {dispatch(setCountryInput(e.target.value))}} required id="new-search-input" placeholder="Country name here.." />
         <button id="new-search-button">Search</button>
       </form>
     </div>
   );
-};
-
-NewSearch.propTypes = {
-  retrieveData: PropTypes.func.isRequired,
-  errorToggle: PropTypes.func,
 };
 
 export default NewSearch;

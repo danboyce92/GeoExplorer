@@ -1,5 +1,6 @@
 import { url } from './config';
 
+//No longer in use due to redux store & thunks
 export async function getAllCountries() {
   const response = await fetch(`${url}all`);
 
