@@ -6,7 +6,7 @@ Geo-Explorer is a web app that upon a user's request, communicates with the publ
 
 If you want to use this app, you can navigate to https://geo-explorer-henna.vercel.app to access the live site. Alternatively, if you wish to install the app locally, you can do so by following the instructions below.
 
-\*Installing this project requires node and git.
+_Installing this project requires node and git._
 
 1. Open a terminal and navigate to the empty directory you want to store the app in.
 
